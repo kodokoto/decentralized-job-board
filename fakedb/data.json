@@ -1,0 +1,11 @@
+{
+    "data": {
+        "hash1": {
+            "profilePicture": "",
+            "media": [
+                "some/image.png",
+                "some/image.png"
+            ]
+        }
+    }
+}
