@@ -4,10 +4,10 @@ import { ethers, providers } from 'ethers'
 import { css } from '@emotion/css'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { createClient, STORAGE_KEY, authenticate as authenticateMutation, getChallenge, getDefaultProfile } from '../api'
+import { createClient, STORAGE_KEY, authenticate as authenticateMutation, getChallenge, getDefaultProfile } from './api'
 import { parseJwt, refreshAuthToken } from '../utils'
 import { AppContext } from '../context'
-import Modal from '../components/CreatePostModal'
+// import Modal from '../components/CreatePostModal'
 
 function MyApp({ Component, pageProps }) {
   const [connected, setConnected] = useState(true)
@@ -157,7 +157,6 @@ function MyApp({ Component, pageProps }) {
 }
 
 const appLayoutStyle = css`
-  width: 900px;
   margin: 0 auto;
   padding: 78px 0px 50px;
 `
@@ -197,7 +196,6 @@ const navStyle = css`
 `
 
 const navContainerStyle = css`
-  width: 900px;
   margin: 0 auto;
   display: flex;
 `

@@ -1,6 +1,6 @@
 import { createClient as createUrqlClient } from 'urql'
 import { getProfiles, getPublications } from './queries'
-import { refreshAuthToken, generateRandomColor } from '../utils'
+import { refreshAuthToken, generateRandomColor } from '../../utils'
 
 export const APIURL = "https://api.lens.dev"
 export const STORAGE_KEY = "LH_STORAGE_KEY"
