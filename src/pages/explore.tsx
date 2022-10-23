@@ -2,8 +2,8 @@
 import { GetServerSideProps, GetStaticProps } from 'next'
 import { useState } from 'react';
 import Card from '../components/Card'
-
-
+import db from '../../fakedb/data.json'
+import Navbar from '../components/Navbar'
 interface Props {
     username: string; // use to fetch media
     smartContracts: Contract[]
@@ -34,46 +34,67 @@ interface Props {
 
 }
 
-export default function Explore({ data, ...props } : Props) {
+function handleSwipe() {
+    // const 
+}
+
+export default function Explore({ data, ...props } : any) {
 
     const [expanded, setExpanded] = useState(false);
-
-    console.log(data);
-
+    const [active, setActive] = useState(0)
+    console.log("pong")
+    console.log(data['0'])
     return (
         <>
-            <div className='flex flex-col'>
-                <p>{data?.profile}</p>
-                <p>{data.bio}</p>
-                <p>
-                    { 
-                        expanded
-                        ? data.media
-                        : null
-                    }
-                </p>
-                <div className='flex flex-col justify-start align-items-start'>
+            <main className='flex flex-col w-[100vw] h-[100vh]'>
+                <Navbar/>
+                {
+                    data.map((e: any, i: number) => {
+                        return <Card data={e} dataset={i==0 ? "active": "unknown"}/>
+                    })
+                }
+                {/* <Card data={data['0']} dataset={"active"}/> */}
+                {/* <div className='flex flex-row justify-start align-items-start'>
                     <button onClick={() => setExpanded(true)}>swipe up</button>
                     <button onClick={() => setExpanded(false)}>swipe down</button>
                     <button onClick={() => fetch('/api/connect', {
                         method: 'POST',
                         body: JSON.stringify({name: data.profile})
                     })}>Swipe Right</button>
-                </div>
+                </div> */}
+                <div className='flex flex-row justify-evenly'>
+                    <button onClick={() => {
+                        setActive(active - 1 >= 0 ? active - 1 : props.data.length - 1)
+                    }}>dislike</button>
 
-            </div>
+                    <button onClick={()=>{
+                        setActive(active + 1 <= props.data.length - 1 ? active + 1 : 0)
+                    }}>like</button>
+                </div>
+                
+
+            </main>
         </>
         
     )
 }
 
+function hasKey<O>(obj: O, key: PropertyKey): key is keyof O {
+    return key in obj
+}  
+
 export const getServerSideProps: GetServerSideProps = async (context) => {
 
-    const data = {
-        profile: 'joe smith',
-        bio: 'dev',
-        media: 'some/image.png'
+    let data: any = []
+    const hashes: string[] = await ['hash1'] // TODO: get from backend
+
+    for (const hash of hashes) {
+        if (hasKey(db.data, hash)) {
+            data.push(db.data[hash])
+        }
     }
+    console.log("gsp")
+    console.log(data)
     return { props: {data} }
 }
   
