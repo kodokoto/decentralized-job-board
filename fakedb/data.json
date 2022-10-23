@@ -1,0 +1,22 @@
+{
+    "data": {
+        "hash1": {
+            "username": "john",
+            "profilePicture": "",
+            "posts": [
+                {
+                    "media": "some/image1.png",
+                    "likes": 0
+                },
+                {
+                    "media": "some/image2.png",
+                    "likes": 0
+                },                
+                {
+                    "media": "some/image3.png",
+                    "likes": 0
+                }
+            ] 
+        }
+    }
+}
