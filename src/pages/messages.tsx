@@ -8,7 +8,7 @@ export default function MessageHub() {
 
     return (
         <>
-            <main className='flex flex-col justify-end align-end h-[100vh]'>
+            <main className='flex flex-col justify-end align-end h-[100vh] '>
                 <section>
 
                 </section>

@@ -37,3 +37,25 @@ main {
     background: black;
   }
 }
+
+.card[data-status="active"] {
+  transition-delay: 300ms;
+}
+
+.card[data-status="after"] {
+  transform: translateX(50%) scale(0);
+}
+
+.card[data-status="before"] {
+  transform: translateX(-50%) scale(0);
+}
+
+.card[data-status="becoming-active-from-after"] {
+  transform: translateX(50%) scale(0);
+  transition: none;
+}
+
+.card[data-status="becoming-active-from-before"] {
+  transform: translateX(-50%) scale(0);
+  transition: none;
+}
