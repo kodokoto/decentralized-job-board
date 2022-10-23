@@ -10,6 +10,7 @@ interface Props {
 }
 
 
+
 interface Contract {
     name: string
     buyer: string, // wallet addresses
