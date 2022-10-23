@@ -6,23 +6,10 @@ import { useState } from 'react'
 export default function Card(props: any) {
     console.log('ping')
     console.log()
-    // const styles = {
-    //     width: ,
-    // }
-    let largest = props.data.length
-    function getNextActive(active: number) {
-        if (active == largest) {
-            return 0
-        } else {
-            return active + 1
-        }
-    }
-    
+    let largest = props.data.length    
     const [active, setActive] = useState(0)
     console.log("aiwdugauiwydg")
     console.log(props.data)
-
-
 
     return (
         <>
