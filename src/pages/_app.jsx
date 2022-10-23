@@ -7,6 +7,7 @@ import { useRouter } from 'next/router'
 import { createClient, STORAGE_KEY, authenticate as authenticateMutation, getChallenge, getDefaultProfile } from './api'
 import { parseJwt, refreshAuthToken } from '../utils'
 import { AppContext } from '../context'
+import { IconHexagon, IconLogin } from '@tabler/icons';
 // import Modal from '../components/CreatePostModal'
 
 function MyApp({ Component, pageProps }) {
@@ -93,17 +94,12 @@ function MyApp({ Component, pageProps }) {
             <div className={linkContainerStyle}>
               <Link href='/'>
                 <a>
-                  <img src="/icon.svg" className={iconStyle} />
+                  <IconHexagon size={32} />
                 </a>
               </Link>
               <Link href='/'>
                 <a>
                   <p className={linkTextStyle}>Home</p>
-                </a>
-              </Link>
-              <Link href='/explore'>
-                <a>
-                  <p className={linkTextStyle}>Explore Profiles</p>
                 </a>
               </Link>
               <Link href='/messages'>
@@ -131,10 +127,7 @@ function MyApp({ Component, pageProps }) {
                   <button
                     className={modalButtonStyle}
                     onClick={() => setIsModalOpen(true)}>
-                    <img
-                      src="/create-post.svg"
-                      className={createPostStyle}
-                    />
+                    <IconLogin size={32}/> 
                   </button>
                 )
               }
@@ -169,7 +162,7 @@ const linkTextStyle = css`
 
 const iconStyle = css`
   height: 35px;
-  margin-right: 40px;
+  margin: 40px;
 `
 
 const modalButtonStyle = css`
@@ -196,11 +189,15 @@ const navStyle = css`
 const navContainerStyle = css`
   margin: 0 auto;
   display: flex;
+  justify-content: space-evenly;
+  width: 100%;
 `
 
 const linkContainerStyle = css`
   display: flex;
   align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
 `
 
 const buttonContainerStyle = css`
