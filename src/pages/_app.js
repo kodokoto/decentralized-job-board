@@ -185,12 +185,10 @@ const createPostStyle = css`
 `
 
 const navStyle = css`
-  background-color: white;
   padding: 15px 30px;
   display: flex;
-  position: fixed;
+  position: absolute;
   width: 100%;
-  background-color: white;
   z-index: 1;
   border-bottom: 1px solid #ededed;
 `

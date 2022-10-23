@@ -48,7 +48,7 @@ export default function Explore({ data, ...props } : any) {
     return (
         <>
             <main className='flex flex-col w-[100vw] h-[100vh]'>
-                <Navbar/>
+                {/* <Navbar/> */}
                 {
                     data.map((e: any, i: number) => {
                         return <Card data={e} dataset={i==0 ? "active": "unknown"}/>
