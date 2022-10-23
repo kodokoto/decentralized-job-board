@@ -4,6 +4,8 @@ import { useState } from 'react';
 import Card from '../components/Card'
 import db from '../../fakedb/data.json'
 import Navbar from '../components/Navbar'
+import { ActionIcon } from '@mantine/core';
+import { IconHeart, IconX } from '@tabler/icons';
 interface Props {
     username: string; // use to fetch media
     smartContracts: Contract[]
@@ -43,15 +45,20 @@ export default function Explore({ data, ...props } : any) {
 
     const [expanded, setExpanded] = useState(false);
     const [active, setActive] = useState(0)
+    const [posts, setPosts] = useState([])
     console.log("pong")
     console.log(data['0'])
+    
     return (
         <>
-            <main className='flex flex-col w-[100vw] h-[100vh]'>
+            <main className='flex flex-col w-[100vw] h-[100vh] bg-gradient-to-r from-cyan-500 to-blue-500'>
                 <Navbar/>
                 {
+                    
                     data.map((e: any, i: number) => {
-                        return <Card data={e} dataset={i==0 ? "active": "unknown"}/>
+                        const [isShowing, setIsShowing] = useState(i==0 ? true : false)
+                        // setPosts(posts.push(setIsShowing))
+                        return <Card data={e} dataset={i==0 ? "active": "unknown"} />
                     })
                 }
                 {/* <Card data={data['0']} dataset={"active"}/> */}
@@ -64,13 +71,16 @@ export default function Explore({ data, ...props } : any) {
                     })}>Swipe Right</button>
                 </div> */}
                 <div className='flex flex-row justify-evenly'>
-                    <button onClick={() => {
+                    <ActionIcon variant="filled" size={64}><IconX size={32} /></ActionIcon>
+                    <ActionIcon variant="filled" size={64}><IconHeart size={32} /></ActionIcon>
+
+                    {/* <button onClick={() => {
                         setActive(active - 1 >= 0 ? active - 1 : props.data.length - 1)
                     }}>dislike</button>
 
                     <button onClick={()=>{
                         setActive(active + 1 <= props.data.length - 1 ? active + 1 : 0)
-                    }}>like</button>
+                    }}>like</button> */}
                 </div>
                 
 
